@@ -9,4 +9,6 @@ object Constants {
     const val DATE_PERSON_DEATH = "PersonDeathDate"
     const val DATE_DEFAULT = 0L
 
+    const val DATABASE_NAME = "inspiring_persons-db"
+
 }

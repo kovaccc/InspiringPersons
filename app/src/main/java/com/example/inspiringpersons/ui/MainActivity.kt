@@ -2,9 +2,7 @@ package com.example.inspiringpersons.ui
 
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.text.format.DateFormat.getDateFormat
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
@@ -16,15 +14,15 @@ import androidx.activity.viewModels
 import com.example.inspiringpersons.R
 import com.example.inspiringpersons.databinding.ActivityMainBinding
 import com.example.inspiringpersons.databinding.ContentMainBinding
-import com.example.inspiringpersons.di.SharedPrefModule
 import com.example.inspiringpersons.dialogs.DATE_PICKER_ID
 import com.example.inspiringpersons.dialogs.DATE_PICKER_TITLE
 import com.example.inspiringpersons.dialogs.DatePickerFragment
 import com.example.inspiringpersons.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
-import javax.inject.Inject
 import android.text.format.DateFormat
+import android.widget.Toast
+import com.example.inspiringpersons.data.model.InspiringPerson
 import com.example.inspiringpersons.dialogs.DATE_PICKER_DATE
 
 
@@ -57,10 +55,28 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
         
         val dateListener = initializeDateListener()
+        contentMainBinding.etBirthDate.setOnClickListener(dateListener)
+        contentMainBinding.etDeathDate.setOnClickListener(dateListener)
 
         var quotes = ArrayList<String>()
         val adapter = ArrayAdapter(this, R.layout.item_quote, R.id.quote, quotes)
         contentMainBinding.lvPersonQuotes.adapter = adapter
+
+
+        contentMainBinding.apply {
+
+            btnSave.setOnClickListener {
+                if(addeditDescription.text.isEmpty() || etImageLink.text.isEmpty()) {
+                    Toast.makeText(this@MainActivity, getString(R.string.toast_fill_all), Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    mainViewModel.saveInspiringPerson(InspiringPerson(imageLink = etImageLink.text.toString(),
+                        description = addeditDescription.text.toString(), birthDate = birthDate,
+                        deathDate = deathDate))
+                }
+            }
+        }
+
 
 
         mainViewModel.currentQuotesLD.observe(this,
@@ -95,8 +111,11 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         contentMainBinding.btnAddQuote.setOnClickListener {
             val quote = contentMainBinding.etQuote.text.toString()
             Log.d(TAG, "onCreate: adding quote with value $quote")
-            mainViewModel.addQuote(quote)
+            if(quote.isNotEmpty()) {
+                mainViewModel.addQuote(quote)
+            }
         }
+
 
 
         Log.d(TAG, "onCreate: ends")
@@ -169,7 +188,6 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
     }
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, dayOfMonth: Int) {
-
         val calendar = GregorianCalendar()
         calendar.set(year, month, dayOfMonth, 0, 0, 0)
 
