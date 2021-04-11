@@ -1,9 +1,9 @@
 package com.example.inspiringpersons.di
 
 import android.content.Context
-import com.example.inspiringpersons.dao.InspiringPersonDao
-import com.example.inspiringpersons.dao.QuoteDao
-import com.example.inspiringpersons.data.model.AppDatabase
+import com.example.inspiringpersons.data.InspiringPersonDao
+import com.example.inspiringpersons.data.QuoteDao
+import com.example.inspiringpersons.data.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +22,7 @@ class DatabaseModule {
         return AppDatabase.getInstance(context)
     }
 
-    @Provides // we live this and below unscoped because we want new instance every time
+    @Provides // we leave this and below unscoped because we want new instance every time
     fun provideInspiringPersonsDao(appDatabase: AppDatabase): InspiringPersonDao {
         return appDatabase.inspiringPersonDao()
     }

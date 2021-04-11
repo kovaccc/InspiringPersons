@@ -4,7 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.inspiringpersons.data.model.PersonsWithQuotes
+import com.example.inspiringpersons.model.PersonsWithQuotes
 import com.example.inspiringpersons.databinding.ItemInspiringPersonBinding
 
 private const val TAG = "InspiringPersonsAdap"

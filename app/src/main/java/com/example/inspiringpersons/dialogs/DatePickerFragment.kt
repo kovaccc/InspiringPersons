@@ -15,6 +15,7 @@ private const val TAG = "DatePickerFragment"
 const val DATE_PICKER_ID = "ID"
 const val DATE_PICKER_TITLE = "TITLE"
 const val DATE_PICKER_DATE = "DATE"
+const val DATE_DEFAULT = 0L
 
 class DatePickerFragment : AppCompatDialogFragment(), DatePickerDialog.OnDateSetListener
 {

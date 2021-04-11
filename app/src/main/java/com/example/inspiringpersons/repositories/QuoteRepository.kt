@@ -1,7 +1,7 @@
 package com.example.inspiringpersons.repositories
 
-import com.example.inspiringpersons.data.model.PersonsWithQuotes
-import com.example.inspiringpersons.data.model.Quote
+import com.example.inspiringpersons.model.PersonsWithQuotes
+import com.example.inspiringpersons.model.Quote
 import kotlinx.coroutines.flow.Flow
 
 interface QuoteRepository {

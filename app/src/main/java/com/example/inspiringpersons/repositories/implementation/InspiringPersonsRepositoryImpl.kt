@@ -1,7 +1,7 @@
 package com.example.inspiringpersons.repositories.implementation
 
-import com.example.inspiringpersons.dao.InspiringPersonDao
-import com.example.inspiringpersons.data.model.InspiringPerson
+import com.example.inspiringpersons.data.InspiringPersonDao
+import com.example.inspiringpersons.model.InspiringPerson
 import com.example.inspiringpersons.repositories.InspiringPersonsRepository
 import javax.inject.Inject
 

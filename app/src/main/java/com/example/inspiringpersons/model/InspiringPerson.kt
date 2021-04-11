@@ -1,4 +1,4 @@
-package com.example.inspiringpersons.data.model
+package com.example.inspiringpersons.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

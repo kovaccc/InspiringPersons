@@ -1,6 +1,6 @@
 package com.example.inspiringpersons.repositories
 
-import com.example.inspiringpersons.data.model.InspiringPerson
+import com.example.inspiringpersons.model.InspiringPerson
 
 
 interface InspiringPersonsRepository {

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.inspiringpersons.R
 import com.example.inspiringpersons.adapters.InspiringPersonsAdapter
-import com.example.inspiringpersons.data.model.PersonsWithQuotes
+import com.example.inspiringpersons.model.PersonsWithQuotes
 import com.example.inspiringpersons.databinding.ActivityInspiringPersonsBinding
 import com.example.inspiringpersons.databinding.ContentInspiringPersonsBinding
 import com.example.inspiringpersons.viewmodels.PersonsViewModel

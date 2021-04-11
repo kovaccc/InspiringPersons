@@ -1,10 +1,10 @@
-package com.example.inspiringpersons.dao
+package com.example.inspiringpersons.data
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.inspiringpersons.data.model.InspiringPerson
+import com.example.inspiringpersons.model.InspiringPerson
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -21,5 +21,5 @@ interface InspiringPersonDao {
     suspend fun insertAll(persons: List<InspiringPerson>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertInspiringPerson(inspiringPerson: InspiringPerson): Long
+    suspend fun insertInspiringPerson(inspiringPerson: InspiringPerson): Long // return id of inserted person
 }

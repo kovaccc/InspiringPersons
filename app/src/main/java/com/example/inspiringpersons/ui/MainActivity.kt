@@ -21,8 +21,9 @@ import com.example.inspiringpersons.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 import android.text.format.DateFormat
+import android.widget.AdapterView
 import android.widget.Toast
-import com.example.inspiringpersons.data.model.InspiringPerson
+import com.example.inspiringpersons.model.InspiringPerson
 import com.example.inspiringpersons.dialogs.DATE_PICKER_DATE
 
 
@@ -63,6 +64,11 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         contentMainBinding.lvPersonQuotes.adapter = adapter
 
 
+        contentMainBinding.lvPersonQuotes.setOnItemClickListener {parent, view, position, id ->
+            mainViewModel.deleteQuote(position)
+        }
+
+
         contentMainBinding.apply {
 
             btnSave.setOnClickListener {
@@ -70,9 +76,11 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     Toast.makeText(this@MainActivity, getString(R.string.toast_fill_all), Toast.LENGTH_SHORT).show()
                 }
                 else {
-                    mainViewModel.saveInspiringPerson(InspiringPerson(imageLink = etImageLink.text.toString(),
+                    mainViewModel.saveInspiringPerson(
+                        InspiringPerson(imageLink = etImageLink.text.toString(),
                         description = addeditDescription.text.toString(), birthDate = birthDate,
-                        deathDate = deathDate))
+                        deathDate = deathDate)
+                    )
                 }
             }
         }
@@ -101,7 +109,7 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
         mainViewModel.deathDateLD.observe(this,
             {
-                val dateFormat = DateFormat.getDateFormat(this) // formats date depending on different parts of a world
+                val dateFormat = DateFormat.getDateFormat(this)
                 val userDate = dateFormat.format(it)
                 deathDate = it
                 contentMainBinding.etDeathDate.setText(userDate)
@@ -206,7 +214,7 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         }
     }
 
-    override fun onDestroy() { // checking viewmodel clearing
+    override fun onDestroy() {
         Log.d(TAG, "onDestroy: starts")
         super.onDestroy()
         Log.d(TAG, "onDestroy: ends")

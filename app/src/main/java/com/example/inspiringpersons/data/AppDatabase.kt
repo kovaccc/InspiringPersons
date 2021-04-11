@@ -1,12 +1,12 @@
-package com.example.inspiringpersons.data.model
+package com.example.inspiringpersons.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.inspiringpersons.dao.InspiringPersonDao
-import com.example.inspiringpersons.dao.QuoteDao
+import com.example.inspiringpersons.model.InspiringPerson
+import com.example.inspiringpersons.model.Quote
 import com.example.inspiringpersons.utilities.Constants.DATABASE_NAME
 
 @Database(entities = [Quote::class, InspiringPerson::class], version = 1, exportSchema = false)

@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.inspiringpersons.R
-import com.example.inspiringpersons.data.model.PersonsWithQuotes
+import com.example.inspiringpersons.model.PersonsWithQuotes
 import com.example.inspiringpersons.databinding.ItemInspiringPersonBinding
 
 private const val TAG = "InspiringPersonsView"
@@ -25,15 +25,13 @@ class InspiringPersonsViewHolder(private val binding: ItemInspiringPersonBinding
                 .centerCrop()
                 .into(ivPerson)
 
-
             val dateFormat = DateFormat.getDateFormat(itemView.context)
             val personBirthDate = dateFormat.format(personWithQuotes.inspiringPerson.birthDate)
             val personDeathDate = dateFormat.format(personWithQuotes.inspiringPerson.deathDate)
 
-            tvPersonDates.text = itemView.context.getString(R.string.textview_person_dates, personBirthDate, personDeathDate )
+            tvPersonDates.text = itemView.context.getString(R.string.textview_person_dates, personBirthDate, personDeathDate)
             tvPersonDescription.text = personWithQuotes.inspiringPerson.description
         }
-
 
         itemView.setOnClickListener {
             listener.onItemClick(personWithQuotes)
