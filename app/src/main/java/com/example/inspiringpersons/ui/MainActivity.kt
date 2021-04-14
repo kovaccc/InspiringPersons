@@ -21,7 +21,6 @@ import com.example.inspiringpersons.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 import android.text.format.DateFormat
-import android.widget.AdapterView
 import android.widget.Toast
 import com.example.inspiringpersons.model.InspiringPerson
 import com.example.inspiringpersons.dialogs.DATE_PICKER_DATE

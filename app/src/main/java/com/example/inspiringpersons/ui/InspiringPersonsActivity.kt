@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.inspiringpersons.R
@@ -56,10 +55,7 @@ class InspiringPersonsActivity : AppCompatActivity(), InspiringPersonsAdapter.On
     }
 
     override fun onItemClick(personWithQuotes: PersonsWithQuotes) {
-        val randomQuote = personWithQuotes.personQuotes.shuffled().random().quoteText
-        val showText = if(randomQuote.isEmpty()) getString(R.string.toast_empty_quote) else randomQuote
-
-        Toast.makeText(this, showText, Toast.LENGTH_SHORT).show()
-
+        val randomQuote = if(personWithQuotes.personQuotes.isEmpty()) getString(R.string.toast_empty_quote) else personWithQuotes.personQuotes.shuffled().random().quoteText
+        Toast.makeText(this, randomQuote, Toast.LENGTH_SHORT).show()
     }
 }
