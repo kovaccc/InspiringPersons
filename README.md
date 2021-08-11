@@ -23,7 +23,7 @@ The project seeks to use recommended practices and libraries in Android developm
 
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/75457058/128995920-b09bb5ba-c3b3-4164-bb86-b1f38772ee03.png)
-![image](https://user-images.githubusercontent.com/75457058/128996918-ef56cd43-8d1a-4136-80d6-837960b4b2b5.png)
+![image](https://user-images.githubusercontent.com/75457058/128999734-d8c803e3-ef54-4d58-93c7-db34eb979ee7.png)
 
 
 
